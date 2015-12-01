@@ -8,7 +8,7 @@ Varnish Saintmode Module
 
 :Author: Dag Haavi Finstad
 :Date: 2015-12-01
-:Version: 0.8
+:Version: 1.0.1
 :Manual section: 3
 
 SYNOPSIS
