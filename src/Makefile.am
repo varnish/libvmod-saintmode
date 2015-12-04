@@ -13,10 +13,10 @@ libvmod_saintmode_la_SOURCES = \
 vcc_if.c vcc_if.h: @VMODTOOL@ $(top_srcdir)/src/vmod_saintmode.vcc
 	@VMODTOOL@ $(top_srcdir)/src/vmod_saintmode.vcc
 
-VMOD_TESTS = tests/*.vtc
+VMOD_TESTS = $(top_srcdir)/src/tests/*.vtc
 .PHONY: $(VMOD_TESTS)
 
-tests/*.vtc:
+$(top_srcdir)/src/tests/*.vtc: libvmod_saintmode.la
 	@VARNISHTEST@ -Dvarnishd=@VARNISHD@ -Dvmod_topbuild=$(abs_top_builddir) -Dvmoddir=@VMOD_DIR@ $@
 
 check: $(VMOD_TESTS)
