@@ -30,6 +30,7 @@
 #include <stdlib.h>
 #include <pthread.h>
 
+#include "vcl.h"
 #include "vrt.h"
 #include "cache/cache.h"
 #include "cache/cache_director.h"
@@ -97,7 +98,7 @@ vmod_blacklist(VRT_CTX, struct vmod_priv *priv, VCL_DURATION expires) {
 	struct vmod_saintmode_saintmode *sm;
 
 	CHECK_OBJ_NOTNULL(ctx, VRT_CTX_MAGIC);
-	if (!ctx->bo || !ctx->bo->director_resp) {
+	if (ctx->method != VCL_MET_BACKEND_RESPONSE) {
 		VSLb(ctx->vsl, SLT_VCL_Error, "saintmode.blacklist() called"
 		    " outside of vcl_backend_response");
 		return;
